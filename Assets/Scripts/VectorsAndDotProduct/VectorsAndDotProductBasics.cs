@@ -1,35 +1,42 @@
 using UnityEngine;
 
-public class DotProductGeneral : MonoBehaviour
+public class VectorsAndDotProductBasics : MonoBehaviour
 {
     [Header("Datas")]
-    [SerializeField] private Transform PointA;
-    [SerializeField] private Transform PointB;
-    [SerializeField, Range(1.0f,10.0f)] private float ReferenceRange = 5;
+    [SerializeField] Transform PointA;
+    [SerializeField] Transform PointB;
+    [SerializeField, Range(1.0f,10.0f)] float ReferenceRange = 5;
 
     [Header("Vectors")]
-    [SerializeField] private Vector3 VecA;
-    [SerializeField] private Vector3 VecB;
-    [SerializeField] private float LenA;
-    [SerializeField] private float LenB;
+    [SerializeField] Vector3 VecA;
+    [SerializeField] Vector3 VecB;
+    [SerializeField] Vector3 VecAToB;
+    [SerializeField] float LenA;
+    [SerializeField] float LenB;
 
     [Header("Normalized vectors")]
-    [SerializeField, Range(0.04f, 0.5f), Tooltip("Tip of the arrow of the normalized vectors")] float NormalizedVectorTipSize = 0.08f;
-    [SerializeField] private Vector3 NormalizedVecA;
-    [SerializeField] private Vector3 NormalizedVecB;
+    [SerializeField, Range(0.04f, 0.5f), Tooltip("Tip of the arrow of the normalized vectors")] 
+    float NormalizedVectorTipSize = 0.08f;
+    [SerializeField] Vector3 NormalizedVecA;
+    [SerializeField] Vector3 NormalizedVecB;
 
     [Header("Dot product")]
     [SerializeField] float DotProductResult;
     [SerializeField, Tooltip("Caparatively to the dot product, this value indicate a distance between a " +
         "point and the projection of the other one on ourself")] 
-    private float ScalarProjectionResult;
+    float ScalarProjectionResult;
     [SerializeField, Tooltip("Represent the precise impact point of the projection of B on A")]
-    private Vector3 VectorProjectionResult;
-    [SerializeField, Range(0.04f, 0.5f), Tooltip("Tip of the arrow of the normalized vectors")] float NormalizedVectorProjectionResultSize = 0.08f;
+    Vector3 VectorProjectionResult;
+    [SerializeField, Range(0.04f, 0.5f), Tooltip("Tip of the arrow of the normalized vectors")] 
+    float NormalizedVectorProjectionResultSize = 0.08f;
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         DrawStartingDatas();
+        VecAToB = VecB - VecA;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position + VecA, VecAToB);
 
         //Length
         LenA = Mathf.Sqrt(VecA.x * VecA.x + VecA.y * VecA.y + VecA.z * VecA.z);
@@ -39,8 +46,8 @@ public class DotProductGeneral : MonoBehaviour
         NormalizedVecA = VecA / LenA;
         NormalizedVecB = VecB.normalized;
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.localPosition + NormalizedVecA, NormalizedVectorTipSize);
-        Gizmos.DrawWireSphere(transform.localPosition + NormalizedVecB, NormalizedVectorTipSize);
+        Gizmos.DrawWireSphere(transform.position + NormalizedVecA, NormalizedVectorTipSize);
+        Gizmos.DrawWireSphere(transform.position + NormalizedVecB, NormalizedVectorTipSize);
 
         //Dot product
         //DotProductResult = Vector3.Dot(VecA, VecB);
@@ -63,11 +70,12 @@ public class DotProductGeneral : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + transform.right * ReferenceRange);
 
         //Vectors
-        VecA = PointA.localPosition;
-        VecB = PointB.localPosition;
+        VecA = PointA.position;
+        VecB = PointB.position;
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.localPosition, transform.localPosition + PointA.localPosition);
+        Gizmos.DrawLine(transform.position, transform.position + VecA);
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.localPosition, transform.localPosition + PointB.localPosition);
+        Gizmos.DrawLine(transform.position, transform.position + VecB);
     }
+#endif
 }

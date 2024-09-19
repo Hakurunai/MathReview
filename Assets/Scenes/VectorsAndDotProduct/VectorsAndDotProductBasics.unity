@@ -171,16 +171,17 @@ MonoBehaviour:
   PointA: {fileID: 2040195022}
   PointB: {fileID: 1501338440}
   ReferenceRange: 5
-  VecA: {x: 4.18, y: 2.17, z: 0}
-  VecB: {x: 0.68, y: 2.91, z: 0}
-  LenA: 4.7097025
-  LenB: 2.9883943
+  VecA: {x: 2.656, y: 1.531, z: 0}
+  VecB: {x: 0.844, y: 1.416, z: 0}
+  VecAToB: {x: -1.8119999, y: -0.11500001, z: 0}
+  LenA: 3.065664
+  LenB: 1.6484514
   NormalizedVectorTipSize: 0.08
-  NormalizedVecA: {x: 0.8875295, y: 0.460751, z: 0}
-  NormalizedVecB: {x: 0.22754695, y: 0.9737671, z: 0}
-  DotProductResult: 9.157101
-  ScalarProjectionResult: 1.9443055
-  VectorProjectionResult: {x: 1.7256285, y: 0.8958407, z: 0}
+  NormalizedVecA: {x: 0.8663702, y: 0.4994024, z: 0}
+  NormalizedVecB: {x: 0.5119957, y: 0.858988, z: 0}
+  DotProductResult: 4.4095597
+  ScalarProjectionResult: 1.4383702
+  VectorProjectionResult: {x: 1.2461611, y: 0.71832556, z: 0}
   NormalizedVectorProjectionResultSize: 0.13
 --- !u!1 &1501338439
 GameObject:
@@ -207,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 1501338439}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.68, y: 2.91, z: 0}
+  m_LocalPosition: {x: 0.844, y: 1.416, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -238,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 2040195021}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.18, y: 2.17, z: 0}
+  m_LocalPosition: {x: 2.656, y: 1.531, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
